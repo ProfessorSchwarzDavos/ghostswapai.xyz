@@ -3,56 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ghost Swap | ghostswapai.xyz</title>
-  <meta name="description" content="Ghost Swap is the private swap at ghostswapai.xyz. Review a route, then send from your own wallet. Wallet sign-in is not open yet." />
+  <title>Ghost Swap | Private swaps from Solana, built on NEAR Intents</title>
+  <meta name="description" content="Ghost Swap is a privacy terminal built on NEAR Intents. Swap privately from Solana. The dark pool on NEAR is next." />
   <link rel="icon" href="/logo.jpg" />
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
-    body { margin: 0; color: #f6f3fb; font: 16px/1.5 system-ui, sans-serif; background:
-      radial-gradient(900px 500px at 50% -10%, rgba(156, 92, 255, .35), transparent 60%),
-      #0b0614; }
-    header, main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
-    nav { display: flex; gap: 18px; align-items: center; }
-    nav a { color: #ddd4f2; text-decoration: none; }
-    .brand { display: flex; gap: 10px; align-items: center; color: white; text-decoration: none; font-weight: 750; letter-spacing: -0.03em; }
-    .brand img { width: 42px; height: 42px; border-radius: 12px; }
-    .layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: center; padding: 28px 0 64px; }
-    h1 { font-size: clamp(3rem, 7vw, 5.6rem); line-height: .92; letter-spacing: -0.055em; margin: 0 0 16px; }
-    .muted { color: #cbbde4; max-width: 520px; }
-    .card { background: linear-gradient(180deg, #1a1228, #120c1d); border: 1px solid #3a2c55; border-radius: 22px; padding: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
-    .row { display: flex; justify-content: space-between; gap: 12px; background: #0e0a16; border: 1px solid #2e2444; border-radius: 16px; padding: 14px; margin: 10px 0; }
-    label { display: block; color: #a894c8; font-size: 13px; }
-    strong { font-size: 28px; letter-spacing: -0.04em; }
-    .token { align-self: center; border-radius: 999px; padding: 8px 12px; background: #2a2140; }
-    button, .go { width: 100%; border: 0; border-radius: 14px; padding: 14px; margin-top: 8px; font-weight: 750; color: white; background: linear-gradient(90deg, #7c4dff, #b06cff); text-decoration: none; display: block; text-align: center; }
-    .note { color: #b7a6d4; font-size: 13px; }
-    @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
+    body { margin: 0; background: #07060b; color: #f4f1f8; font: 16px/1.5 Inter, ui-sans-serif, system-ui, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    .top { text-align: center; font-size: 11px; letter-spacing: .16em; color: #c4b6e4; background: #161222; padding: 8px 12px; }
+    .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #b26cff; margin-right: 8px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 28px; border-bottom: 1px solid #1c1824; }
+    .brand { display: flex; gap: 8px; align-items: center; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; }
+    nav { display: flex; gap: 22px; align-items: center; color: #ddd6ea; }
+    .open { background: #9b6bff; color: white; border-radius: 12px; padding: 10px 16px; font-weight: 700; }
+    main { width: min(1180px, calc(100% - 48px)); margin: 54px auto 24px; }
+    .live { color: #b89cff; letter-spacing: .18em; font-size: 12px; font-weight: 700; }
+    h1 { font-size: clamp(4.2rem, 10vw, 7.4rem); line-height: .86; letter-spacing: -0.055em; margin: 14px 0 22px; font-weight: 760; }
+    .violet { color: #8d63f6; }
+    .copy { max-width: 640px; color: #d9d2e6; font-size: 1.15rem; }
+    .actions { display: flex; gap: 12px; margin: 28px 0 34px; flex-wrap: wrap; }
+    .primary, .secondary { border-radius: 12px; padding: 12px 16px; font-weight: 700; }
+    .primary { background: #8b5cf6; color: white; }
+    .secondary { border: 1px solid #3a3348; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 0; border: 1px solid #2a2436; border-radius: 16px; overflow: hidden; }
+    .facts div { padding: 16px 18px; border-right: 1px solid #2a2436; }
+    .facts strong { display: block; }
+    .facts span { color: #b7aec8; font-size: 14px; }
+    .help { align-self: center; margin: 12px; background: #8b5cf6; color: white; border-radius: 999px; padding: 12px 16px; font-weight: 700; }
+    footer { width: min(1180px, calc(100% - 48px)); margin: 14px auto 40px; color: #b7aec8; }
+    footer a { color: #d8ccf5; }
+    @media (max-width: 800px) {
+      header, nav { flex-wrap: wrap; }
+      .facts { grid-template-columns: 1fr; }
+      h1 { font-size: 3.4rem; }
+    }
   </style>
 </head>
 <body>
+  <div class="top"><span class="dot"></span>LIVE BETA · PRIVATE SWAPS ON SOLANA · BUILT ON NEAR INTENTS</div>
   <header>
-    <a class="brand" href="https://ghostswapai.xyz"><img src="/logo.jpg" alt="" /> Ghost Swap</a>
+    <a class="brand" href="https://ghostswapai.xyz"><img src="/logo.jpg" alt="Ghost Swap" /><img src="/logo.jpg" alt="" /></a>
     <nav>
-      <a href="https://swap.ghostswapai.xyz">Swap</a>
-      <a href="https://docs.ghostswapai.xyz">Docs</a>
+      <a href="https://swap.ghostswapai.xyz">Private route</a>
+      <a href="https://swap.ghostswapai.xyz">Privacy swap</a>
       <a href="https://rewards.ghostswapai.xyz">Rewards</a>
-      <a href="/subdomains">ghostswapai.xyz</a>
+      <a href="https://app.ghostswapai.xyz">NearFi</a>
+      <a class="open" href="https://swap.ghostswapai.xyz">Open swap ↗</a>
     </nav>
   </header>
-  <main class="layout">
-    <section>
-      <p>ghostswapai.xyz</p>
-      <h1>Go dark.<br>On Ghost Swap.</h1>
-      <p class="muted">Review a route, check the fee, then send the deposit from your own wallet. Ghost Swap does not ask you to connect a wallet on this page.</p>
+  <main>
+    <div class="live">LIVE BETA</div>
+    <h1>GO DARK.<br><span class="violet">ON NEAR INTENTS.</span></h1>
+    <p class="copy">Ghost Swap is a privacy terminal built on NEAR Intents.<br>Swap privately from Solana today. The dark pool on NEAR is next. Our own ZK pools follow after an audit.</p>
+    <div class="actions">
+      <a class="primary" href="https://swap.ghostswapai.xyz">Open Privacy swap →</a>
+      <a class="secondary" href="https://swap.ghostswapai.xyz">Private route ↗</a>
+    </div>
+    <section class="facts">
+      <div><strong>No custody</strong><span>Ghost Swap never holds your funds</span></div>
+      <div><strong>Manual deposit</strong><span>Nothing moves until you send</span></div>
+      <div><strong>Solana origin</strong><span>Swap or bridge out from Solana</span></div>
+      <a class="help" href="https://docs.ghostswapai.xyz">? Help & answers</a>
     </section>
-    <form class="card" action="https://swap.ghostswapai.xyz">
-      <div class="row"><div><label>You send</label><strong>0.00</strong></div><span class="token">SOL</span></div>
-      <div class="row"><div><label>You receive</label><strong>0.00</strong></div><span class="token">NEAR</span></div>
-      <button type="submit">Review quote</button>
-      <p class="note">Live quotes are coming soon on swap.ghostswapai.xyz. No wallet sign-in yet.</p>
-    </form>
   </main>
+  <footer>Read the guide · Whitepaper v0.3 · Built on <a href="https://near-intents.org/">NEAR Intents</a> — the cross-chain intents network behind Privacy swap.</footer>
 </body>
 </html>
